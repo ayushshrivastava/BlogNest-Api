@@ -1,109 +1,74 @@
-🪶 BlogNest API
-BlogNest API is a powerful and secure backend service for a blogging platform. Built with Node.js, Express.js, and MongoDB, it provides seamless authentication, blog management, and secure route handling using modern tools like JWT, bcryptjs, and Helmet for security.
+# 🪶 BlogNest API
 
-🚀 Live Preview (if hosted)
-Coming Soon – Deploy on platforms like Render, Railway, or Vercel backend to get a public URL.
+**BlogNest API** is a secure and scalable backend API for a blogging platform. Built using **Node.js**, **Express.js**, and **MongoDB**, this project includes user authentication, post management, and secure route handling with tools like **JWT**, **bcryptjs**, and **Helmet**.
 
-📸 Preview
-Here's a sneak peek of what the API offers under the hood:
+---
 
-pgsql
-Copy
-Edit
-🔐 Secure JWT Authentication
-🧾 RESTful API Design
-✉️ Password Reset via Email
-🛡️ Helmet + Joi for security & validation
-📦 Scalable Code Architecture
-🧰 Tech Stack
+## 🧰 Tech Stack
 
-Category	Technology
-Backend	Node.js, Express.js
-Database	MongoDB (Mongoose ODM)
-Auth	JWT, bcryptjs
-Security	Helmet, Cookie-Parser, CORS
-Validation	Joi
-Mail	Nodemailer
-Misc	dotenv, express.json(), nodemon (dev)
-📁 Project Structure
-bash
-Copy
-Edit
-blognest-api/
-├── controllers/        # Auth and Post logic
-├── models/             # User and Post schemas
-├── routes/             # API route definitions
-├── middleware/         # Auth middleware
-├── utils/              # (Optional) Email configs, etc.
-├── index.js            # Entry point
-├── .env                # Secrets & Config
-├── package.json
-🔧 Installation & Setup
-bash
-Copy
-Edit
-git clone https://github.com/your-username/blognest-api.git
-cd blognest-api
-npm install
-🛠️ Create a .env file in root:
-env
-Copy
-Edit
-PORT=5000
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_jwt_secret
-MAIL_USER=your_email@example.com
-MAIL_PASS=your_email_password_or_app_password
-🚦 Scripts
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB with Mongoose  
+- **Authentication:** JWT & bcryptjs  
+- **Validation:** Joi  
+- **Security:** Helmet, Cookie-Parser, CORS  
+- **Email Services:** Nodemailer  
+- **Other:** dotenv, nodemon (for development)
 
-Command	Description
-npm start	Run the app (production)
-npm run dev	Run in development with watcher
-🔐 API Endpoints
-🔑 Auth Routes
+---
 
-Method	Endpoint	Description
-POST	/api/register	Register a user
-POST	/api/login	Login and get token
-POST	/api/forgot-password	Email password reset link
-POST	/api/reset-password/:token	Reset via token
-📝 Blog Post Routes (Protected)
 
-Method	Endpoint	Description
-GET	/api/posts	Get all posts
-GET	/api/posts/:id	Get single post
-POST	/api/posts	Create post
-PUT	/api/posts/:id	Update post
-DELETE	/api/posts/:id	Delete post
-✅ Token Required in Authorization header:
+## 🏃 Scripts
 
-bash
-Copy
-Edit
-Bearer <your_jwt_token>
-✉️ Forgot Password Flow (Nodemailer)
-User submits their email at /forgot-password
+| Command         | Description                   |
+|----------------|-------------------------------|
+| `npm start`     | Run in production mode        |
+| `npm run dev`   | Run in development (watcher)  |
 
-Receives a reset link in their inbox.
+---
 
-Resets password via token with /reset-password/:token.
+## 🔗 API Endpoints
 
-🔒 Security Practices
-🧂 Passwords hashed with bcryptjs
+### 🔐 Authentication
 
-🛡️ Helmet for setting secure HTTP headers
+| Method | Route                 | Description                 |
+|--------|-----------------------|-----------------------------|
+| POST   | `/api/register`       | Register new user           |
+| POST   | `/api/login`          | Login and get token         |
+| POST   | `/api/forgot-password`| Request reset email link    |
+| POST   | `/api/reset-password` | Reset password via token    |
 
-✅ JWT Auth Middleware for route protection
+---
 
-🎯 Input validation with Joi
+### 📚 Blog Post Management (🔐 Protected)
 
-🛠️ Future Features
-✅ Comment System
+| Method | Route             | Description         |
+|--------|------------------|---------------------|
+| GET    | `/api/posts`      | Get all posts       |
+| GET    | `/api/posts/:id`  | Get single post     |
+| POST   | `/api/posts`      | Create new post     |
+| PUT    | `/api/posts/:id`  | Update a post       |
+| DELETE | `/api/posts/:id`  | Delete a post       |
 
-🔍 Search & Filter API
+> 🛡️ **Note**: All blog routes require `Authorization` header:  
+> `Bearer <your_token>`
 
-📜 Swagger Documentation
+---
 
-🧑‍🤝‍🧑 Role-based Access (Admin, User)
+## ✉️ Forgot Password Flow
 
-📄 Pagination & Sorting
+1. User hits `POST /api/forgot-password` with email.
+2. Mail with reset token link is sent.
+3. User clicks link → hits `POST /api/reset-password/:token`.
+4. User sets a new password successfully.
+
+---
+
+## 🔒 Security Highlights
+
+- 🧂 **Passwords hashed** using `bcryptjs`
+- 🛡️ **Helmet** used to secure HTTP headers
+- ✅ **JWT-based route protection**
+- 🎯 **Input validation** with `Joi`
+
+---
+
