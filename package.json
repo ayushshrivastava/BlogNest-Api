@@ -1,5 +1,5 @@
 {
-	"name": "auth-project",
+	"name": "blognest-api",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -7,7 +7,7 @@
 		"start": "node --env-file=.env index.js",
 		"dev": "node --watch --trace-warnings --env-file=.env index.js"
 	},
-	"author": "Adil",
+	"author": "Ayush",
 	"license": "ISC",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
